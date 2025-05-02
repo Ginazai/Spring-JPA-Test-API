@@ -38,7 +38,7 @@ public class User {
     @Column(name="nombre_completo", unique = true, nullable = false)
     private String name;
 
-    @Column(name="nombre_de_usuario", unique = true, nullable = false)
+    @Column(name="username", unique = true, nullable = false)
     private String username;
 
     @Column(name="clave", nullable = false)

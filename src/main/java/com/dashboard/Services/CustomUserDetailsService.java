@@ -21,7 +21,10 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.dashboard.Entities.User user = usuarioRepo.findByUsername(username);
-        System.out.println(username);
+        if (user == null) {
+            System.out.println("Usuario no encontrado: " + username);
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        }
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());

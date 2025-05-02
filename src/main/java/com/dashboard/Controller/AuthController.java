@@ -18,8 +18,10 @@ import com.dashboard.Repositories.UserRepository;
 import com.dashboard.Services.CustomUserDetailsService;
 import com.dashboard.Services.ProductService;
 import com.dashboard.Services.UserService;
+import com.dashboard.model.AuthRegister;
 import com.dashboard.model.AuthRequest;
 import com.dashboard.model.AuthResponse;
+import com.dashboard.model.RegisterRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,13 +39,17 @@ public class AuthController {
     private JwtUtil jwtUtil;
     @Autowired
     private CustomUserDetailsService userDetailsService;
+    @Autowired
+    private AuthRegister authService;
 	
 	@PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest) {
         try {
+        	System.out.println("Before auth manager");
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     authRequest.getUsername(), authRequest.getPassword()));
+            System.out.println("After auth manager");
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }
@@ -51,7 +57,18 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService
                 .loadUserByUsername(authRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
+        System.out.println(jwt);
 
         return ResponseEntity.ok(new AuthResponse(jwt));
+    }
+	
+	 @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+        try {
+            User user = authService.register(request);
+            return ResponseEntity.ok("Usuario registrado con éxito");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
