@@ -1,4 +1,4 @@
-package com.dashboard.model;
+package com.dashboard.DTOs;
 
 import java.util.Set;
 import com.dashboard.Entities.ProductCategory;

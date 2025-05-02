@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.dashboard.DTOs.UpdateProductCategories;
+import com.dashboard.DTOs.UpdateUserRoles;
+import com.dashboard.Entities.Product;
 import com.dashboard.Entities.User;
 import com.dashboard.Services.UserService;
 
@@ -42,6 +47,13 @@ public class UsersController {
     		@RequestBody @Valid User user) {
     	return userService.actualizarUsuario(id, user);
     }
+    
+    @PutMapping("/usuarios/{id}/roles")
+    public ResponseEntity<User> actualizarCategorias(@PathVariable Long id, 
+    		@RequestBody @Valid UpdateUserRoles updatedRoles) {
+    	User updatedUser = userService.actualizarRoles(id, updatedRoles.getRoleNames());
+    	return ResponseEntity.ok(updatedUser);
+    } 
     
     @DeleteMapping("/usuarios/{id}")
     void borrarUsuario(@PathVariable Long id) {

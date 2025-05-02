@@ -1,4 +1,4 @@
-package com.dashboard.model;
+package com.dashboard.DTOs;
 
 import java.time.LocalDateTime;
 

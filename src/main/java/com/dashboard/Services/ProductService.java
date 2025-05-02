@@ -13,5 +13,5 @@ public interface ProductService {
 	Product agregarProducto(Product contenido); //post
 	Product borrarProducto(Long id); //put
 	Product actualizarProducto(Long id, Product contenidoEntidad); //put
-	Product actualizarCategoria(Long id, Set<String> categories);
+	Product actualizarCategoria(Long id, Set<String> categories); //put
 }

@@ -16,8 +16,9 @@ public class ProductCategory {
 	public ProductCategory() {
 		super();
 	}
-	public ProductCategory(Long id, String name, Boolean active) {
+	public ProductCategory(String name, Boolean active) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.active = active;
 	}

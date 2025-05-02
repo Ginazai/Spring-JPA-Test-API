@@ -16,8 +16,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.dashboard.model.Role;
-
 @Entity
 @Table(name = "Productos")
 public class Product {
@@ -26,9 +24,10 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(Long id, String name, String category, float price, String tags, 
+	public Product(String name, String category, float price, String tags, 
 			Boolean active, Set<ProductCategory> categories) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.tags = tags;

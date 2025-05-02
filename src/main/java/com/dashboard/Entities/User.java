@@ -15,8 +15,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.dashboard.model.Role;
-
 @Entity
 @Table(name = "Usuarios")
 public class User {
@@ -26,6 +24,7 @@ public class User {
 	}
 	public User(String name, Boolean active, Set<Role> roles) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.active = active;
 		this.roles = roles;

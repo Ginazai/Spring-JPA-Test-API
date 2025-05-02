@@ -1,4 +1,4 @@
-package com.dashboard.model;
+package com.dashboard.DTOs;
 
 public class AuthRequest {
     private String username;

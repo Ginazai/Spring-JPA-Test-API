@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+
+import com.dashboard.DTOs.UpdateProductCategories;
 import com.dashboard.Entities.Product;
 import com.dashboard.Entities.ProductCategory;
 import com.dashboard.Services.ProductService;
-import com.dashboard.model.UpdateProductCategories;
 
 import javax.validation.Valid;
 

@@ -1,4 +1,4 @@
-package com.dashboard.model;
+package com.dashboard.Entities;
 
 import javax.persistence.*;
 

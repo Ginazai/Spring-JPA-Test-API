@@ -13,15 +13,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 
 import com.dashboard.Config.JwtUtil;
+import com.dashboard.DTOs.AuthRegister;
+import com.dashboard.DTOs.AuthRequest;
+import com.dashboard.DTOs.AuthResponse;
+import com.dashboard.DTOs.RegisterRequest;
 import com.dashboard.Entities.User;
 import com.dashboard.Repositories.UserRepository;
 import com.dashboard.Services.CustomUserDetailsService;
 import com.dashboard.Services.ProductService;
 import com.dashboard.Services.UserService;
-import com.dashboard.model.AuthRegister;
-import com.dashboard.model.AuthRequest;
-import com.dashboard.model.AuthResponse;
-import com.dashboard.model.RegisterRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
