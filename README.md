@@ -1,1 +1,10 @@
-Link a Postman para casos de prueba: https://.postman.co/workspace/My-Workspace~7f1d84a2-42d5-4dbb-8544-f3b34fc8f91e/collection/42447002-199517d7-3b38-4d7c-b308-819e2be59b9e?action=share&creator=42447002
+<h6>El proyecto contiene los queries utilizados en SQL Server 2019 en la carpeta <pre>SQLServerQueries</pre>, especificamente:</h6>
+<ol>
+	<li>Un archivo <code>.txt</code> para flexibilidad de uso.</li>
+	<li>5 archivos (del 0 al 4) enumerados por orden de uso.</li>
+	<li style="color:red;"><b>Importante: </b>El ultimo query debe ser ejecutado luego de registrarse como <pre>admin</pre> para conferir los permisos administrativos a ese usuario</li>
+</ol>
+Adicionalmente se incluye una coleccion de <b>Postman</b> que puede ser cargada para ejecutarse de manera automatica.
+<pre>
+	Al momento de la entrega faltan pruebas y manejo de errores. Metodos fuera de la coleccion pueden no estar propiamente manejados o causar errores.
+</pre>
