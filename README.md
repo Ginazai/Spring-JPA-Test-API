@@ -2,7 +2,7 @@
 <ol>
 	<li>Un archivo <code>.txt</code> para flexibilidad de uso.</li>
 	<li>5 archivos (del 0 al 4) enumerados por orden de uso.</li>
-	<li style="color:red;"><b>Importante: </b>El ultimo query debe ser ejecutado luego de registrarse como <pre>admin</pre> para conferir los permisos administrativos a ese usuario</li>
+	<li><b>Importante: </b>El ultimo query debe ser ejecutado luego de registrarse como <code>admin</code> para conferir los permisos administrativos a ese usuario</li>
 </ol>
 Adicionalmente se incluye una coleccion de <b>Postman</b> (<code>Outputs API.postman_collection.json</code>) que puede ser cargada para ejecutarse de manera automatica.
 <pre>
