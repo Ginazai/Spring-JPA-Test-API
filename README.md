@@ -1,4 +1,4 @@
-<h6>El proyecto contiene los queries utilizados en SQL Server 2019 en la carpeta <pre>SQLServerQueries</pre>, especificamente:</h6>
+<h6>El proyecto contiene los queries utilizados en SQL Server 2019 en la carpeta <code>SQLServerQueries</code>, especificamente:</h6>
 <ol>
 	<li>Un archivo <code>.txt</code> para flexibilidad de uso.</li>
 	<li>5 archivos (del 0 al 4) enumerados por orden de uso.</li>
