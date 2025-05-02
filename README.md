@@ -4,7 +4,7 @@
 	<li>5 archivos (del 0 al 4) enumerados por orden de uso.</li>
 	<li style="color:red;"><b>Importante: </b>El ultimo query debe ser ejecutado luego de registrarse como <pre>admin</pre> para conferir los permisos administrativos a ese usuario</li>
 </ol>
-Adicionalmente se incluye una coleccion de <b>Postman</b> que puede ser cargada para ejecutarse de manera automatica.
+Adicionalmente se incluye una coleccion de <b>Postman</b> (<code>Outputs API.postman_collection.json</code>) que puede ser cargada para ejecutarse de manera automatica.
 <pre>
 	Al momento de la entrega faltan pruebas y manejo de errores. Metodos fuera de la coleccion pueden no estar propiamente manejados o causar errores.
 </pre>
