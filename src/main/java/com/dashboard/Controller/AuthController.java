@@ -33,11 +33,9 @@ public class AuthController {
 	@PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest authRequest) {
         try {
-        	System.out.println("Before auth manager");
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                     authRequest.getUsername(), authRequest.getPassword()));
-            System.out.println("After auth manager");
         } catch (BadCredentialsException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales inválidas");
         }

@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 import com.dashboard.DTOs.UpdateProductCategories;
+import com.dashboard.DTOs.UpdateProductRequest;
 import com.dashboard.Entities.Product;
 import com.dashboard.Entities.ProductCategory;
 import com.dashboard.Services.ProductService;
@@ -45,8 +46,10 @@ public class ProductsController {
     }
     
     @PutMapping("/productos/{id}")
-    public Product actualizarProducto(@PathVariable Long id, @RequestBody @Valid Product product) {
-    	return productService.actualizarProducto(id, product);
+    public ResponseEntity<Product> actualizarProducto(@PathVariable Long id, 
+    		@RequestBody UpdateProductRequest request) {
+    	request.setId(id);
+    	return ResponseEntity.ok(productService.actualizarProducto(request));
     }
     
     @PutMapping("/productos/{id}/categorias")

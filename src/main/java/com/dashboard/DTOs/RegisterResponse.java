@@ -2,6 +2,7 @@ package com.dashboard.DTOs;
 
 import java.time.LocalDateTime;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,9 @@ public class RegisterResponse{
 
     public User register(RegisterRequest request) {
         if (userRepository.findByUsername(request.getUsername()) != null) {
-            throw new RuntimeException("El usuario ya existe");
+        	JSONObject response = new JSONObject();
+        	response.put("error:", "El usuario ya existe");
+            throw new RuntimeException(response.toString());
         }
 
         User user = new User();
@@ -31,7 +34,6 @@ public class RegisterResponse{
         user.setCreate_date(LocalDateTime.now());
         user.setLast_access(LocalDateTime.now());
         user.setActive(true);
-        // Puedes asignar roles predeterminados si deseas
         return userRepository.save(user);
     }
 }

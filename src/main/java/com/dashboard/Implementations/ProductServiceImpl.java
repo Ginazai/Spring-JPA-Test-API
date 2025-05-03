@@ -12,6 +12,7 @@ import com.dashboard.Exceptions.ProductNotFoundException;
 
 import org.springframework.stereotype.Service;
 
+import com.dashboard.DTOs.UpdateProductRequest;
 import com.dashboard.Entities.Product;
 import com.dashboard.Entities.ProductCategory;
 import com.dashboard.Repositories.CategoryRepository;
@@ -58,18 +59,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product actualizarProducto(Long id, Product updatedProduct) {
-		Product existingProduct = productRepository.findById(id)
-				.orElseThrow(() -> new ProductNotFoundException(id));
+	public Product actualizarProducto(UpdateProductRequest request) {
+		Product existingProduct = productRepository.findById(request.getId())
+				.orElseThrow(() -> new ProductNotFoundException(request.getId()));
 		if (existingProduct != null) {
 			LocalDateTime updated_time = LocalDateTime.now();
-			String newName = updatedProduct.getName() != null ? updatedProduct.getName()
+			String newName = request.getName() != null ? request.getName()
 					: existingProduct.getName(); 
-			float newPrice = (float) updatedProduct.getPrice() != 0f ? updatedProduct.getPrice()
+			float newPrice = (float) request.getPrice() != 0f ? request.getPrice()
 					: existingProduct.getPrice();
-			String newTags = updatedProduct.getTags() != null ? updatedProduct.getTags()
+			String newTags = request.getTags() != null ? request.getTags()
 					: existingProduct.getTags();
-			Boolean newActive = updatedProduct.getActive() != null ? updatedProduct.getActive()
+			Boolean newActive = request.getActive() != null ? request.getActive()
 					: existingProduct.getActive();
 			existingProduct.setName(newName);
 			existingProduct.setPrice(newPrice);

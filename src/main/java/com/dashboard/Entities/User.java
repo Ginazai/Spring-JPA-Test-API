@@ -22,7 +22,7 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(String name, Boolean active, Set<Role> roles) {
+	public User(String name, Boolean active, Set<Role> roles, Long id) {
 		super();
 		this.id = id;
 		this.name = name;

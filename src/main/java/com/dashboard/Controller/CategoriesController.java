@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.dashboard.Entities.ProductCategory;
 import com.dashboard.Services.CategoryService;
-
 @RestController
 public class CategoriesController {
 	private final CategoryService categoryService;
@@ -23,8 +23,9 @@ public class CategoriesController {
 	  }
 	
     @GetMapping("/categorias")
-    public List<ProductCategory> listar() {
-    	return categoryService.listarCategorias();
+    public ResponseEntity<List<ProductCategory>> listar() {
+    	List<ProductCategory> response = categoryService.listarCategorias();
+    	return ResponseEntity.ok(response);
     }
     
     @GetMapping("/categorias/{id}")

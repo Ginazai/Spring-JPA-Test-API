@@ -25,7 +25,7 @@ public class Product {
 		super();
 	}
 	public Product(String name, String category, float price, String tags, 
-			Boolean active, Set<ProductCategory> categories) {
+			Boolean active, Set<ProductCategory> categories, Long id) {
 		super();
 		this.id = id;
 		this.name = name;
