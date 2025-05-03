@@ -10,7 +10,7 @@ import com.dashboard.Entities.User;
 import com.dashboard.Repositories.UserRepository;
 
 @Service
-public class AuthRegister{
+public class RegisterResponse{
 
     @Autowired
     private UserRepository userRepository;

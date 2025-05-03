@@ -1,6 +1,6 @@
 package com.dashboard.DTOs;
 
-public class AuthRequest {
+public class LoginRequest {
     private String username;
     private String password;
 

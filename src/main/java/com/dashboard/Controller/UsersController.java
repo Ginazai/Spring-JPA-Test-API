@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,16 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.dashboard.DTOs.UpdateProductCategories;
+import com.dashboard.DTOs.RegisterResponse;
 import com.dashboard.DTOs.UpdateUserRoles;
-import com.dashboard.Entities.Product;
+import com.dashboard.DTOs.RegisterRequest;
 import com.dashboard.Entities.User;
 import com.dashboard.Services.UserService;
 
 @RestController
 public class UsersController {
 	private final UserService userService;
+	
+	@Autowired
+	private RegisterResponse response;
 	
 	UsersController(UserService userService) {
 	    this.userService = userService;
@@ -33,13 +36,14 @@ public class UsersController {
     }
     
     @GetMapping("/usuarios/{id}")
-    public User obtenerUsuario(@PathVariable Long id) {
-    	return userService.buscarPorId(id);
+    public ResponseEntity<User> obtenerUsuario(@PathVariable Long id) {
+    	return ResponseEntity.ok(userService.buscarPorId(id));
     }
     
     @PostMapping("/usuarios")
-    public User agregarUsuario(@RequestBody User user) {
-    	return userService.crearUsuario(user);
+    public  ResponseEntity<User> agregarUsuario(@RequestBody RegisterRequest request) {
+    	User user = response.register(request);
+    	return ResponseEntity.ok(user);
     }
     
     @PutMapping("/usuarios/{id}")
@@ -56,7 +60,7 @@ public class UsersController {
     } 
     
     @DeleteMapping("/usuarios/{id}")
-    void borrarUsuario(@PathVariable Long id) {
-    	userService.borrarUsuario(id);
+    public ResponseEntity<User> borrarUsuario(@PathVariable Long id) {
+    	return ResponseEntity.ok(userService.borrarUsuario(id));
     }    
 }

@@ -1,23 +1,16 @@
 package com.dashboard.Implementations;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dashboard.Entities.Product;
-import com.dashboard.Entities.ProductCategory;
 import com.dashboard.Entities.Role;
 import com.dashboard.Entities.User;
-import com.dashboard.Exceptions.ProductNotFoundException;
 import com.dashboard.Exceptions.UserNotFoundException;
 import com.dashboard.Repositories.RolesRepository;
 import com.dashboard.Repositories.UserRepository;
@@ -32,26 +25,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RolesRepository rolesRepository;
 
-    //@Autowired
-    //private PasswordEncoder passwordEncoder;
-
     @Override
     public User buscarPorUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    @Override
-    public User crearUsuario(User user) {
-        // Codificar contraseña antes de guardar
-        //user.setPassword(passwordEncoder.encode(user.getPassword()));
-    	user.setPassword(user.getPassword());
-        user.setCreate_date(java.time.LocalDateTime.now());
-        return userRepository.save(user);
-    }
-
 	@Override
 	public User buscarPorId(Long id) {
-		return userRepository.getReferenceById(id);
+		return userRepository.findById(id).get();
 	}
 
 	@Override
@@ -70,7 +51,6 @@ public class UserServiceImpl implements UserService {
 		User existingUser = userRepository.findById(id)
 				.orElse(null);
 		if (existingUser != null) {
-			LocalDateTime updated_time = LocalDateTime.now();
 			String newName = updatedUser.getName() != null ? updatedUser.getName() 
 					: existingUser.getName();
 			String newPassword= updatedUser.getPassword() != null ? updatedUser.getPassword() 
@@ -85,8 +65,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void borrarUsuario(Long id) {
-		userRepository.getReferenceById(id).setActive(false);
+	public User borrarUsuario(Long id) {
+		User user = userRepository.findById(id)
+				.orElse(null);
+		if(user!=null) {user.setActive(false); return user;}
+		return null;
 	}
 	
 	@Override

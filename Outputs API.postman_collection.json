@@ -327,6 +327,84 @@
 						"url": "http://localhost:8081/usuarios"
 					},
 					"response": []
+				},
+				{
+					"name": "POST usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyMzg5MzEsImV4cCI6MTc0NjIzOTUzMX0.1weOXHfzynKlg3L8Hg5u6ZTScKYok94KsCoQBv5oV8Y"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"test user2\",\r\n    \"username\" : \"sampleusername\",\r\n    \"password\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "GET one usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyMzk2NjUsImV4cCI6MTc0NjI0MDI2NX0.iynmBwA-_aHGgdXrtQdTgQqD1hC7vn6rJ4WspIE1Row"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyMzk2NjUsImV4cCI6MTc0NjI0MDI2NX0.iynmBwA-_aHGgdXrtQdTgQqD1hC7vn6rJ4WspIE1Row"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample updated name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyMzk2NjUsImV4cCI6MTc0NjI0MDI2NX0.iynmBwA-_aHGgdXrtQdTgQqD1hC7vn6rJ4WspIE1Row"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
 				}
 			]
 		}
