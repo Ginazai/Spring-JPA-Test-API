@@ -3,18 +3,12 @@ package com.dashboard.DTOs;
 import java.time.LocalDateTime;
 
 public class UpdateProductRequest {
-	private Long id;
 	private String name;
 	private float price;
 	private String tags;
 	private LocalDateTime createDate;
 	private Boolean active;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public String getName() {
 		return name;
 	}

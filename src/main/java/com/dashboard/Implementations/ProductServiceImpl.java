@@ -59,26 +59,25 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product actualizarProducto(UpdateProductRequest request) {
-		Product existingProduct = productRepository.findById(request.getId())
-				.orElseThrow(() -> new ProductNotFoundException(request.getId()));
-		if (existingProduct != null) {
-			LocalDateTime updated_time = LocalDateTime.now();
-			String newName = request.getName() != null ? request.getName()
-					: existingProduct.getName(); 
-			float newPrice = (float) request.getPrice() != 0f ? request.getPrice()
-					: existingProduct.getPrice();
-			String newTags = request.getTags() != null ? request.getTags()
-					: existingProduct.getTags();
-			Boolean newActive = request.getActive() != null ? request.getActive()
-					: existingProduct.getActive();
-			existingProduct.setName(newName);
-			existingProduct.setPrice(newPrice);
-			existingProduct.setTags(newTags);
-			existingProduct.setActive(newActive);
-			existingProduct.setLast_update(updated_time);
-			return productRepository.save(existingProduct);
-		} else {return null;}
+	public Product actualizarProducto(Long id, UpdateProductRequest request) {
+		Product existingProduct = productRepository.findById(id)
+				.orElseThrow(() -> new ProductNotFoundException(id));
+		LocalDateTime updated_time = LocalDateTime.now();
+		String newName = request.getName() != null ? request.getName()
+				: existingProduct.getName(); 
+		float newPrice = (float) request.getPrice() != 0f ? request.getPrice()
+				: existingProduct.getPrice();
+		String newTags = request.getTags() != null ? request.getTags()
+				: existingProduct.getTags();
+		Boolean newActive = request.getActive() != null ? request.getActive()
+				: existingProduct.getActive();
+		existingProduct.setName(newName);
+		existingProduct.setPrice(newPrice);
+		existingProduct.setTags(newTags);
+		existingProduct.setActive(newActive);
+		existingProduct.setLast_update(updated_time);
+		return productRepository.save(existingProduct);
+		
 	}
 	
 	@Override

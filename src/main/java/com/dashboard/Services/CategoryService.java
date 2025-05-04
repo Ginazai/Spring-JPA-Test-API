@@ -1,10 +1,6 @@
 package com.dashboard.Services;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.stereotype.Service;
-
 import com.dashboard.Entities.ProductCategory;
 
 public interface CategoryService {
