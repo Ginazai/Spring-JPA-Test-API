@@ -24,8 +24,6 @@ public class JwtUtil {
     }
 
     public String generateToken(UserDetails userDetails) {
-    	System.out.println(userDetails.getUsername());
-    	System.out.println(userDetails.getAuthorities().toString());
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("roles", userDetails.getAuthorities().toString())
