@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "199517d7-3b38-4d7c-b308-819e2be59b9e",
+		"name": "Outputs API",
+		"description": "Salidas de las prueba realizada.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42447002"
+	},
+	"item": [
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "POST categorias",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample category 2\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/categorias",
+						"description": "### **Response**\n\n``` json\n{\n    \"id\": 8,\n    \"name\": \"sample category 2\",\n    \"create_date\": \"2025-05-02T22:18:12.5316271\",\n    \"last_update\": \"2025-05-02T22:18:12.5316271\",\n    \"active\": true\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "GET categorias",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/categorias",
+						"description": "### Response\n\n``` json\n[\n    {\n        \"id\": 1,\n        \"name\": \"updated category test\",\n        \"create_date\": \"2025-05-03T02:00:20.4333333\",\n        \"last_update\": \"2025-05-02T22:13:42.5869904\",\n        \"active\": true\n    },\n    {\n        \"id\": 2,\n        \"name\": \"test category 2\",\n        \"create_date\": \"2025-05-03T02:00:20.4333333\",\n        \"last_update\": \"2025-05-03T02:00:20.4333333\",\n        \"active\": true\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE categorias",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/categorias/1",
+						"description": "### Response\n\n``` json\n{\n    \"id\": 1,\n    \"name\": \"updated category test\",\n    \"create_date\": \"2025-05-03T02:00:20.4333333\",\n    \"last_update\": \"2025-05-02T22:17:44.6790307\",\n    \"active\": true\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT categorias",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"updated category test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/categorias/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE categorias",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/categorias/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "productos",
+			"item": [
+				{
+					"name": "POST productos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 0,\r\n    \"name\" : \"producto de ejemplo\",\r\n    \"price\" : 40,\r\n    \"tags\": \"x,f,g\",\r\n    \"active\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos"
+					},
+					"response": []
+				},
+				{
+					"name": "GET productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos"
+					},
+					"response": []
+				},
+				{
+					"name": "GET ONE productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT productos",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"updated product example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos/1"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT productos/{id}/categorias",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryNames\": [\"test category 2\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos/1/categorias"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE productos",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/productos/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[Protected] usuarios",
+			"item": [
+				{
+					"name": "POST register",
+					"protocolProfileBehavior": {
+						"protocolVersion": "http2"
+					},
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": {
+								"payload": "",
+								"isSecretBase64Encoded": false,
+								"addTokenTo": "header",
+								"algorithm": "HS256",
+								"secret": "mi_clave_secreta_de_suficientes_bits_como_se_indica",
+								"headerPrefix": "Bearer",
+								"queryParamKey": "token",
+								"header": "{}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"name lastname\",\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/register"
+					},
+					"response": []
+				},
+				{
+					"name": "POST login",
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": {
+								"payload": "",
+								"isSecretBase64Encoded": false,
+								"addTokenTo": "header",
+								"algorithm": "HS256",
+								"secret": "mi_clave_secreta_de_suficientes_bits_como_se_indica",
+								"headerPrefix": "Bearer",
+								"queryParamKey": "token",
+								"header": "{}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"abc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/login"
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuarios (usando token)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "POST usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"test user2\",\r\n    \"username\" : \"sampleusername\",\r\n    \"password\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "GET one usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample updated name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
