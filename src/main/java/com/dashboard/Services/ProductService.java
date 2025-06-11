@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import com.dashboard.DTOs.UpdateProductRequest;
 import com.dashboard.Entities.Product;
+import com.dashboard.Entities.ProductCategory;
 
 public interface ProductService {
 	List<Product> listarProductos(); //get
@@ -12,4 +13,5 @@ public interface ProductService {
 	Product borrarProducto(Long id); //put
 	Product actualizarCategoria(Long id, Set<String> categories); //put
 	Product actualizarProducto(Long id, UpdateProductRequest requestData);
+	Set<ProductCategory> obtenerCategorias(Long id); //get
 }

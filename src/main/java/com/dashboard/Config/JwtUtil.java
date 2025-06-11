@@ -12,6 +12,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import javax.crypto.SecretKey;
+import java.util.List;
 
 @Component
 public class JwtUtil {
@@ -26,9 +27,11 @@ public class JwtUtil {
     public String generateToken(UserDetails userDetails) {
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
-                .claim("roles", userDetails.getAuthorities().toString())
+                .claim("roles", userDetails.getAuthorities().stream()
+						.map(authority -> authority.getAuthority())
+						.toArray())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 1))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // Token valid for 60 minutes
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

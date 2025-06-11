@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +23,7 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(String name, Boolean active, Set<Role> roles, Long id) {
+	public User(Long id, String name, Boolean active, Set<Role> roles) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,7 +32,7 @@ public class User {
 	}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="usuario_ID")
+    @Column(name="usuario_ID", nullable = false)
     private Long id;
     
     @Column(name="nombre_completo", unique = true, nullable = false)
@@ -52,7 +53,8 @@ public class User {
     @Column(name="activo", nullable = false)
     private Boolean active;
     //Join
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,
+    			cascade = {CascadeType.REMOVE})
     @JoinTable(
         name = "Usuario_Roles",
         joinColumns = @JoinColumn(name = "usuario_ID"),
@@ -60,7 +62,12 @@ public class User {
     )    
     private Set<Role> roles = new HashSet<>();
     // Getters y setters
-    
+    public Long getId() {
+    	return id;
+    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}

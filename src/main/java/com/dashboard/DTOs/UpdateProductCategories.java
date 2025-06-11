@@ -4,11 +4,11 @@ import java.util.Set;
 import com.dashboard.Entities.ProductCategory;
 
 public class UpdateProductCategories {
-    private Set<String> categoryNames;
-    public Set<String> getCategoryNames() {
-        return categoryNames;
+    private Set<String> categories;
+    public Set<String> getCategories() {
+        return categories;
     }
-    public void setCategoryNames(Set<String> categoryNames) {
-        this.categoryNames = categoryNames;
+    public void setCategories(Set<String> categories) {
+        this.categories = categories;
     }
 }

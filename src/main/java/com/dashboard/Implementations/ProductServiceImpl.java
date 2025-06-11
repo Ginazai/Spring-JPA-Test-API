@@ -83,6 +83,19 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 	
+	public Set<ProductCategory> obtenerCategorias(Long id) {
+		Product existingProduct = productRepository.findById(id)
+				.orElseThrow(() -> new ProductNotFoundException(id));
+		Set<ProductCategory> categories = existingProduct.getCategories();
+		if (categories == null || categories.isEmpty()) {
+			throw new IllegalArgumentException("El producto no tiene categorías asociadas.");
+		}
+		return categories.stream()
+				.map(category -> categoryRepository.findById(category.getId())
+						.orElseThrow(() -> new ProductNotFoundException(id)))
+				.collect(Collectors.toSet());
+	}
+	
 	@Override
 	@Transactional
 	public Product actualizarCategoria(Long id, Set<String> newCategories) {

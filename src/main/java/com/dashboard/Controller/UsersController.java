@@ -31,8 +31,9 @@ public class UsersController {
 	  }
 	
     @GetMapping("/usuarios")
-    public List<User> listar(User user) {
-    	return userService.listarUsuarios();
+    public ResponseEntity<List<User>> listar(User user) {
+    	List<User> response = userService.listarUsuarios();
+    	return ResponseEntity.ok(response);
     }
     
     @GetMapping("/usuarios/{id}")
