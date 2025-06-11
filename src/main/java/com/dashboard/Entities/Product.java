@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+<<<<<<< HEAD
+import javax.persistence.CascadeType;
+=======
+>>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -58,7 +62,12 @@ public class Product {
     @Column(name="activo", nullable = false)
     private Boolean active;
   //Join
+<<<<<<< HEAD
+    @ManyToMany(fetch = FetchType.EAGER,
+    			cascade = {CascadeType.REMOVE})
+=======
     @ManyToMany(fetch = FetchType.EAGER)
+>>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
     @JoinTable(
         name = "Productos_Categorias",
         joinColumns = @JoinColumn(name = "producto_ID"),

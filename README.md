@@ -1,10 +1,27 @@
 <h1>SpringBoot REST API</h1>
 <p>API REST de comercio electronico desarrollada en SpringBoot implementando SpringSecurity y JWT para la gestion de autenticacion.</p>
 <h2>Tecnologias utilizadas</h2>
+<<<<<<< HEAD
+<p>El proyecto fue desarrollado utilizando las siguientes tecnologias:</p>
+<ul>
+	<li>JavaSE-1.8</li>
+	<li>SpringBoot 3.4.5</li>
+	<li>Spring Security 6.2.0</li>
+	<li>Listado de dependencias en <code>pom.xml</code></li>
+	
+</ul>
+<p>Frontend desarrollado en ReactJS, con una aplicacion de ejemplo que consume la API REST utilizando las siguientes tecnologias:</p>
+<ul>
+	<li><code>npm</code> 10.3.0</li>
+	<li>react 19.1.0</li>
+	<li>react-app 1.1.2</li>
+	<li>Listado de dependencias en <code>package.json</code></li>
+=======
 <ul>
 	<li>JavaSE-1.8</li>
 	<li>SpringBoot 3.4.5</li>
 	<li>Listado de dependencias en <code>pom.xml</code></li>
+>>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 </ul>
 <h2>Instalacion</h2>
 Las instrucciones de instalacion son especificamente para el entorno en el que fue desarrollado el proyecto (Eclipe IDE).

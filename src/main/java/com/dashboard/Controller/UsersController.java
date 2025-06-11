@@ -31,8 +31,14 @@ public class UsersController {
 	  }
 	
     @GetMapping("/usuarios")
+<<<<<<< HEAD
+    public ResponseEntity<List<User>> listar(User user) {
+    	List<User> response = userService.listarUsuarios();
+    	return ResponseEntity.ok(response);
+=======
     public List<User> listar(User user) {
     	return userService.listarUsuarios();
+>>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
     }
     
     @GetMapping("/usuarios/{id}")
