@@ -54,7 +54,6 @@ public class ProductsController {
     @PutMapping("/productos/{id}/categorias")
     public ResponseEntity<Product> actualizarCategorias(@PathVariable Long id, 
     		@RequestBody @Valid UpdateProductCategories productCategories) {
-<<<<<<< HEAD
     	Product updatedProduct = productService.actualizarCategoria(id, productCategories.getCategories());
     	return ResponseEntity.ok(updatedProduct);
     }
@@ -63,11 +62,6 @@ public class ProductsController {
     public Set<ProductCategory> obtenerCategoriasPorProductoId(@PathVariable Long id) {
 		return productService.obtenerCategorias(id);
 	}
-=======
-    	Product updatedProduct = productService.actualizarCategoria(id, productCategories.getCategoryNames());
-    	return ResponseEntity.ok(updatedProduct);
-    } 
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
     
     @DeleteMapping("/productos/{id}")
     Product borrar(@PathVariable Long id) {

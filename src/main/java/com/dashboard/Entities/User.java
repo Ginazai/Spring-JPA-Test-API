@@ -4,10 +4,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-<<<<<<< HEAD
 import javax.persistence.CascadeType;
-=======
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,11 +23,7 @@ public class User {
 	public User() {
 		super();
 	}
-<<<<<<< HEAD
 	public User(Long id, String name, Boolean active, Set<Role> roles) {
-=======
-	public User(String name, Boolean active, Set<Role> roles, Long id) {
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,11 +32,7 @@ public class User {
 	}
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<<<<<<< HEAD
     @Column(name="usuario_ID", nullable = false)
-=======
-    @Column(name="usuario_ID")
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
     private Long id;
     
     @Column(name="nombre_completo", unique = true, nullable = false)
@@ -64,12 +53,8 @@ public class User {
     @Column(name="activo", nullable = false)
     private Boolean active;
     //Join
-<<<<<<< HEAD
     @ManyToMany(fetch = FetchType.EAGER,
     			cascade = {CascadeType.REMOVE})
-=======
-    @ManyToMany(fetch = FetchType.EAGER)
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
     @JoinTable(
         name = "Usuario_Roles",
         joinColumns = @JoinColumn(name = "usuario_ID"),
@@ -77,16 +62,12 @@ public class User {
     )    
     private Set<Role> roles = new HashSet<>();
     // Getters y setters
-<<<<<<< HEAD
     public Long getId() {
     	return id;
     }
 	public void setId(Long id) {
 		this.id = id;
 	}
-=======
-    
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 	public String getUsername() {
 		return username;
 	}

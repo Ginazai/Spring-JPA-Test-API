@@ -48,14 +48,10 @@ public class ProductServiceImpl implements ProductService {
 	public Product borrarProducto(Long id) {
 		Product product = productRepository.findById(id)
 				.orElse(null);
-<<<<<<< HEAD
 		if(product!=null) {
 			product.setActive(false); 
 			return productRepository.save(product); 
 		}
-=======
-		if(product!=null) {product.setActive(false); return product;}
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 		return null;
 	}
 
@@ -87,7 +83,6 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 	
-<<<<<<< HEAD
 	public Set<ProductCategory> obtenerCategorias(Long id) {
 		Product existingProduct = productRepository.findById(id)
 				.orElseThrow(() -> new ProductNotFoundException(id));
@@ -101,8 +96,6 @@ public class ProductServiceImpl implements ProductService {
 				.collect(Collectors.toSet());
 	}
 	
-=======
->>>>>>> 21d727d9b5b8ac5cb3ae2a35f17456907075a0bf
 	@Override
 	@Transactional
 	public Product actualizarCategoria(Long id, Set<String> newCategories) {
