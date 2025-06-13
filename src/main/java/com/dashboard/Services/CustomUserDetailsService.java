@@ -1,5 +1,6 @@
 package com.dashboard.Services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.dashboard.Entities.User user = usuarioRepo.findByUsername(username);
-        if (user == null) {
-            System.out.println("Usuario no encontrado: " + username);
+        if (user == null || !user.getActive()) {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
+        // Update last access time
+        user.setLast_access(LocalDateTime.now());
+        usuarioRepo.save(user);
+        // Convert roles to GrantedAuthority
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());

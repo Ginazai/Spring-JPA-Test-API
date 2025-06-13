@@ -2,17 +2,266 @@
 	"info": {
 		"_postman_id": "199517d7-3b38-4d7c-b308-819e2be59b9e",
 		"name": "Outputs API",
-		"description": "Salidas de las prueba realizada.",
+		"description": "Salidas de las prueba realizas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "42447002"
 	},
 	"item": [
+		{
+			"name": "usuarios",
+			"item": [
+				{
+					"name": "POST register",
+					"protocolProfileBehavior": {
+						"protocolVersion": "http2"
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"name lastname\",\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"@bc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/register"
+					},
+					"response": []
+				},
+				{
+					"name": "POST login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"@bc123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/login"
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuarios",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.sendRequest({\r",
+									"    url: 'http://localhost:8081/login',\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify({\r",
+									"            username: 'admin',\r",
+									"            password: '@bc123'\r",
+									"        })\r",
+									"    }\r",
+									"}, function (err, response) {\r",
+									"    if (err) {\r",
+									"        console.error('Error:', err);\r",
+									"    } else {\r",
+									"        const data = response.json();\r",
+									"        pm.environment.set(\"token\", data.token);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "POST usuarios",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"test user2\",\r\n    \"username\" : \"sampleusername\",\r\n    \"password\" : \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios"
+					},
+					"response": []
+				},
+				{
+					"name": "GET one usuarios",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"sample update\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/usuarios/1"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/usuarios/2"
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "categorias",
 			"item": [
 				{
 					"name": "POST categorias",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -35,6 +284,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -57,6 +312,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -77,7 +338,10 @@
 					"name": "PUT categorias",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "PUT",
 						"header": [],
@@ -98,7 +362,10 @@
 					"name": "DELETE categorias",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
 						},
 						"method": "DELETE",
 						"header": [],
@@ -122,12 +389,30 @@
 			"item": [
 				{
 					"name": "POST productos",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\" : 0,\r\n    \"name\" : \"producto de ejemplo\",\r\n    \"price\" : 40,\r\n    \"tags\": \"x,f,g\",\r\n    \"active\" : true\r\n}",
+							"raw": "{\r\n    \"name\": \"test postman 2\",\r\n    \"price\": 5.99,\r\n    \"tags\": \"\",\r\n    \"active\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,10 +425,38 @@
 				},
 				{
 					"name": "GET productos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -165,6 +478,12 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -183,6 +502,12 @@
 				{
 					"name": "PUT productos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -200,12 +525,30 @@
 				},
 				{
 					"name": "PUT productos/{id}/categorias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"categoryNames\": [\"test category 2\"]\r\n}",
+							"raw": "{\r\n    \"categories\": [\"updated category test\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,6 +562,12 @@
 				{
 					"name": "DELETE productos",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "DELETE",
 						"header": [],
 						"body": {
@@ -235,181 +584,77 @@
 					"response": []
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"pm.sendRequest({\r",
+					"    url: 'http://localhost:8081/register',\r",
+					"    method: 'POST',\r",
+					"    header: {\r",
+					"        'Content-Type': 'application/json'\r",
+					"    },\r",
+					"    body: {\r",
+					"        mode: 'raw',\r",
+					"        raw: JSON.stringify({\r",
+					"            name: \"name lastname\",\r",
+					"            username: 'admin',\r",
+					"            password: '@bc123'\r",
+					"        })\r",
+					"    }\r",
+					"}, function (err, response) {\r",
+					"    if (err) {\r",
+					"        console.error('Error:', err);\r",
+					"    } else {\r",
+					"        const data = response.json();\r",
+					"        pm.environment.set(\"token\", data.token);\r",
+					"    }\r",
+					"});\r",
+					"pm.sendRequest({\r",
+					"    url: 'http://localhost:8081/login',\r",
+					"    method: 'POST',\r",
+					"    header: {\r",
+					"        'Content-Type': 'application/json'\r",
+					"    },\r",
+					"    body: {\r",
+					"        mode: 'raw',\r",
+					"        raw: JSON.stringify({\r",
+					"            username: 'admin',\r",
+					"            password: '@bc123'\r",
+					"        })\r",
+					"    }\r",
+					"}, function (err, response) {\r",
+					"    if (err) {\r",
+					"        console.error('Error:', err);\r",
+					"    } else {\r",
+					"        const data = response.json();\r",
+					"        pm.environment.set(\"token\", data.token);\r",
+					"    }\r",
+					"});"
+				]
+			}
 		},
 		{
-			"name": "[Protected] usuarios",
-			"item": [
-				{
-					"name": "POST register",
-					"protocolProfileBehavior": {
-						"protocolVersion": "http2"
-					},
-					"request": {
-						"auth": {
-							"type": "jwt",
-							"jwt": {
-								"payload": "",
-								"isSecretBase64Encoded": false,
-								"addTokenTo": "header",
-								"algorithm": "HS256",
-								"secret": "mi_clave_secreta_de_suficientes_bits_como_se_indica",
-								"headerPrefix": "Bearer",
-								"queryParamKey": "token",
-								"header": "{}"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"name lastname\",\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"abc123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8081/register"
-					},
-					"response": []
-				},
-				{
-					"name": "POST login",
-					"request": {
-						"auth": {
-							"type": "jwt",
-							"jwt": {
-								"payload": "",
-								"isSecretBase64Encoded": false,
-								"addTokenTo": "header",
-								"algorithm": "HS256",
-								"secret": "mi_clave_secreta_de_suficientes_bits_como_se_indica",
-								"headerPrefix": "Bearer",
-								"queryParamKey": "token",
-								"header": "{}"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"abc123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8081/login"
-					},
-					"response": []
-				},
-				{
-					"name": "GET usuarios (usando token)",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8081/usuarios"
-					},
-					"response": []
-				},
-				{
-					"name": "POST usuarios",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
-							}
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"test user2\",\r\n    \"username\" : \"sampleusername\",\r\n    \"password\" : \"123\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8081/usuarios"
-					},
-					"response": []
-				},
-				{
-					"name": "GET one usuarios",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
-							}
-						},
-						"method": "GET",
-						"header": [],
-						"url": "http://localhost:8081/usuarios/2"
-					},
-					"response": []
-				},
-				{
-					"name": "PUT usuarios",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
-							}
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"sample updated name\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8081/usuarios/2"
-					},
-					"response": []
-				},
-				{
-					"name": "DELETE usuarios",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiW1JPTEVfQURNSU4sIFJPTEVfVVNFUl0iLCJpYXQiOjE3NDYyNDk4MzUsImV4cCI6MTc0NjI1MDQzNX0.QUPtojwAIJU5ZUHgUHNmlfgHOiauO4bO5pB038NS5x0"
-							}
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": "http://localhost:8081/usuarios/2"
-					},
-					"response": []
-				}
-			]
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
