@@ -29,6 +29,8 @@ CREATE TABLE Productos (
     producto_ID BIGINT IDENTITY(1,1) PRIMARY KEY,
     nombre NVARCHAR(255) NOT NULL,
     precio FLOAT NOT NULL,
+    cantidad INT NOT NULL DEFAULT 0,
+    descripcion TEXT,
     tags TEXT,
     fecha_de_creacion DATETIME2,
     ultima_actualizacion DATETIME2,

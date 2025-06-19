@@ -76,7 +76,11 @@ public class ProductServiceImpl implements ProductService {
 				: existingProduct.getActive();
 		existingProduct.setName(newName);
 		existingProduct.setPrice(newPrice);
+		existingProduct.setDescription(request.getDescription() != null ? request.getDescription()
+				: existingProduct.getDescription());
 		existingProduct.setTags(newTags);
+		existingProduct.setQuantity(request.getQuantity() != 0 ? request.getQuantity()
+				: existingProduct.getQuantity());
 		existingProduct.setActive(newActive);
 		existingProduct.setLast_update(updated_time);
 		return productRepository.save(existingProduct);

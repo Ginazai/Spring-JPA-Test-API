@@ -41,13 +41,13 @@ public class ProductsController {
     }
     
     @PostMapping("/productos")
-    public Product agregar(@RequestBody Product product) {
+    public Product agregar(@RequestBody @Valid Product product) {
     	return productService.agregarProducto(product);
     }
     
     @PutMapping("/productos/{id}")
     public ResponseEntity<Product> actualizarProducto(@PathVariable Long id, 
-    		@RequestBody UpdateProductRequest request) {
+    		@RequestBody @Valid UpdateProductRequest request) {
     	return ResponseEntity.ok(productService.actualizarProducto(id, request));
     }
     

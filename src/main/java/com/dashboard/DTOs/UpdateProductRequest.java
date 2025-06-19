@@ -5,7 +5,9 @@ import java.time.LocalDateTime;
 public class UpdateProductRequest {
 	private String name;
 	private float price;
+	private String description;
 	private String tags;
+	private int quantity;
 	private LocalDateTime createDate;
 	private Boolean active;
 	
@@ -38,5 +40,17 @@ public class UpdateProductRequest {
 	}
 	public void setActive(Boolean active) {
 		this.active = active;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

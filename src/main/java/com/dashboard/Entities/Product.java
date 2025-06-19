@@ -26,12 +26,15 @@ public class Product {
 		super();
 	}
 	public Product(String name, String category, float price, String tags, 
-			Boolean active, Set<ProductCategory> categories, Long id) {
+			Boolean active, Set<ProductCategory> categories, Long id,
+			int quantity, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.description = description;
 		this.tags = tags;
+		this.quantity = quantity;
 		this.active = active;
 		this.categories = categories;
 	}
@@ -41,22 +44,37 @@ public class Product {
 	@Column(name="producto_ID", nullable = false)
 	private Long id;
 	
-	@Column(name="nombre", nullable = false)
+	@Column(name="nombre", nullable = false, length = 100,
+			columnDefinition = "VARCHAR(100) default ''")
 	private String name;
 	
-	@Column(name="precio", nullable = false)
+	@Column(name="precio", nullable = false,
+			columnDefinition = "float default 0.0")
 	private float price;
 	
-	@Column(name="tags", columnDefinition = "TEXT")
+	@Column(name="cantidad", nullable = false
+			, columnDefinition = "int default 0")
+	private int quantity;
+	
+	@Column(name="descripcion", columnDefinition = "TEXT",
+			nullable = true)
+	private String description;
+	
+	@Column(name="tags", columnDefinition = "TEXT",
+			nullable = true)
 	private String tags;
 	
-	@Column(name="fecha_de_creacion")
+	@Column(name="fecha_de_creacion",
+			columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+			, nullable = false, updatable = false)
     private LocalDateTime create_date;
     
-    @Column(name="ultima_actualizacion")
+    @Column(name="ultima_actualizacion",
+    		columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private LocalDateTime last_update;
     
-    @Column(name="activo", nullable = false)
+    @Column(name="activo", nullable = false,
+    		columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean active;
   //Join
     @ManyToMany(fetch = FetchType.EAGER,
@@ -128,6 +146,17 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
-	}	 
-
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }
