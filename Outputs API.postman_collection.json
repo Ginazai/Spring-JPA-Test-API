@@ -512,7 +512,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"updated product example\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"updated product example\",\r\n    \"quantity\" : 1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
