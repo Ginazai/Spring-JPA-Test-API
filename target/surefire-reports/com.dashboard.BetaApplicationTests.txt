@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.dashboard.BetaApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.461 s - in com.dashboard.BetaApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.692 s - in com.dashboard.BetaApplicationTests
