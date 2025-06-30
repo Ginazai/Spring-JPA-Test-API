@@ -11,7 +11,7 @@
 	<groupId>com.dashboard</groupId>
 	<artifactId>dashboard</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>BETA-Application</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -112,6 +112,13 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+			        <execution>
+			          <goals>
+			            <goal>repackage</goal>
+			          </goals>
+			        </execution>
+			     </executions>
 			</plugin>
 			<plugin>
 		      <!-- Build an executable JAR -->
