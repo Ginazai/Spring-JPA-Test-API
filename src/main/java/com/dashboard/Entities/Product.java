@@ -17,6 +17,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "Productos")
 public class Product {
@@ -39,21 +42,26 @@ public class Product {
 		this.categories = categories;
 	}
 
+	//Modified schema for PostgreSQL
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="producto_ID", nullable = false)
 	private Long id;
 	
-	@Column(name="nombre", nullable = false, length = 100,
-			columnDefinition = "VARCHAR(100) default ''")
+//	@Column(name="nombre", nullable = false, length = 100,
+//			columnDefinition = "VARCHAR(100) default ''")
+	@Column(name="nombre", nullable = false, length = 100)
 	private String name;
 	
-	@Column(name="precio", nullable = false,
-			columnDefinition = "float default 0.0")
+//	@Column(name="precio", nullable = false,
+//			columnDefinition = "float default 0.0")
+	@Column(name="precio", nullable = false)
 	private float price;
 	
-	@Column(name="cantidad", nullable = false
-			, columnDefinition = "int default 0")
+//	@Column(name="cantidad", nullable = false
+//			, columnDefinition = "int default 0")
+	@Column(name="cantidad", nullable = false)
 	private int quantity;
 	
 	@Column(name="descripcion", columnDefinition = "TEXT",
@@ -69,22 +77,25 @@ public class Product {
 			, nullable = false, updatable = false)
     private LocalDateTime create_date;
     
-    @Column(name="ultima_actualizacion",
-    		columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+//    @Column(name="ultima_actualizacion",
+//    		columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	@Column(name="ultima_actualizacion",
+    		columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime last_update;
     
     @Column(name="activo", nullable = false,
     		columnDefinition = "BOOLEAN DEFAULT TRUE")
     private Boolean active;
-  //Join
-    @ManyToMany(fetch = FetchType.EAGER,
-    			cascade = {CascadeType.REMOVE})
+    //Join
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinTable(
         name = "Productos_Categorias",
         joinColumns = @JoinColumn(name = "producto_ID"),
         inverseJoinColumns = @JoinColumn(name = "categoria_ID")
-    )    
+    )
     private Set<ProductCategory> categories = new HashSet<>();
+
     //Getters & Setters
     public Long getId() {
 		return id;
